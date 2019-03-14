@@ -1,7 +1,2 @@
 # grepo-e2e-0
-Add one line
-on test branch
-Add another line
-yet another line
-forth line
-test
+git@github.com:shaogang-google/grepo-e2e-0.git

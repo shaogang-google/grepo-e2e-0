@@ -1,0 +1,7 @@
+apiVersion: bespin.dev/v1
+kind: Project
+metadata:
+  name: duplicate-project
+spec:
+  displayName: duplicate project
+  id: project-shaogang-org-0313

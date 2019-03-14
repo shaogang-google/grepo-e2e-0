@@ -1,0 +1,10 @@
+apiVersion: addons.sigs.k8s.io/v1alpha1
+kind: Nomos
+metadata:
+  name: gcp-policy-management
+  namespace: nomos-system
+spec:
+  channel: dev
+  git:
+    syncRepo: git@github.com:shaogang-google/grepo-e2e-0.git
+    secretType: ssh

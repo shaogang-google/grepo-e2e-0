@@ -1,7 +1,0 @@
-apiVersion: bespin.dev/v1
-kind: Project
-metadata:
-  name: long-id-project
-spec:
-  displayName: long id project
-  id: project-shaogang-org-0313-try-a-very-long-id-to-fail

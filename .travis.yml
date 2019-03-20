@@ -27,7 +27,7 @@ env:
   # - IMAGE_NAME=demo:latest
   # - FULL_IMAGE_NAME=gcr.io/$PROJECT_ID/$IMAGE_NAME
   # - GOOGLE_APPLICATION_CREDENTIALS="${PWD}/client-secret.json"
-  # - CLUSTER_NAME=softserve-demo
+  # - CLUSTER_NAME=gcp-policy-management
 before_install:
 - openssl aes-256-cbc -K $encrypted_293563e5d432_key -iv $encrypted_293563e5d432_iv -in client-secret.json.enc -out ./client-secret.json -d
 - if [ ! -d $HOME/google-cloud-sdk/bin ]; then rm -rf $HOME/google-cloud-sdk; curl https://sdk.cloud.google.com | bash > /dev/null; fi
@@ -36,7 +36,13 @@ before_install:
 - source $HOME/google-cloud-sdk/path.bash.inc
 # - gcloud components install kubectl
 - gcloud version
+- gcloud components update kubectl
+- gcloud auth activate-service-account --key-file ./client-secret.json
+- gcloud config set project shaogang-1bo2-project-0
+- gcloud config set compute/zone us-west1-b
 # - ./gcloud-sdk-configure.sh
 # - kubectl version
 install: true
-script: true
+script:
+- gcloud container clusters get-credentials gcp-policy-management
+- kubectl get pods -n nomos-system

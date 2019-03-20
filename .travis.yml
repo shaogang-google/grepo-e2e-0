@@ -21,22 +21,22 @@ env:
   global:
   # Do not prompt for user input when using any SDK methods.
   - CLOUDSDK_CORE_DISABLE_PROMPTS=1
-  - PATH=$PATH:$HOME/google-cloud-sdk/bin
-  - PROJECT_ID="shaogang-1bo2-project-0"
-  - ZONE="us-west1-b"
-  - IMAGE_NAME=demo:latest
-  - FULL_IMAGE_NAME=gcr.io/$PROJECT_ID/$IMAGE_NAME
-  - GOOGLE_APPLICATION_CREDENTIALS="${PWD}/client-secret.json"
-  - CLUSTER_NAME=softserve-demo
+  # - PATH=$PATH:$HOME/google-cloud-sdk/bin
+  # - PROJECT_ID="shaogang-1bo2-project-0"
+  # - ZONE="us-west1-b"
+  # - IMAGE_NAME=demo:latest
+  # - FULL_IMAGE_NAME=gcr.io/$PROJECT_ID/$IMAGE_NAME
+  # - GOOGLE_APPLICATION_CREDENTIALS="${PWD}/client-secret.json"
+  # - CLUSTER_NAME=softserve-demo
 before_install:
-- openssl aes-256-cbk -K $encrypted_142535234c_key -iv $encrypted_12323423423440c_in -in client-secret.json.enc -out client-secret.json -d
+- openssl aes-256-cbc -K $encrypted_293563e5d432_key -iv $encrypted_293563e5d432_iv -in client-secret.json.enc -out ./client-secret.json -d
 - if [ ! -d $HOME/google-cloud-sdk/bin ]; then rm -rf $HOME/google-cloud-sdk; curl https://sdk.cloud.google.com | bash > /dev/null; fi
 # This line is critical. We setup the SDK to take precedence in our
 # environment over the old SDK that is already on the machine.
 - source $HOME/google-cloud-sdk/path.bash.inc
-- gcloud components install kubectl
+# - gcloud components install kubectl
 - gcloud version
-- ./gcloud-sdk-configure.sh
-- kubectl version
+# - ./gcloud-sdk-configure.sh
+# - kubectl version
 install: true
 script: true

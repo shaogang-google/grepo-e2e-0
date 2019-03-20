@@ -12,8 +12,8 @@ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 sudo apt-get update && sudo apt-get install google-cloud-sdk
 
 # Install kubectl
-# gcloud components install kubectl
-sudo apt-get install kubectl
+gcloud components update kubectl
+# sudo apt-get install kubectl
 
 # Test the installation
 kubectl version

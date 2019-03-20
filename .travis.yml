@@ -3,8 +3,8 @@ branches:
     - master
 sudo: required
 before_install:
-- chmod +x ./build-scripts/gcloud-sdk-install.sh
+- chmod +x ./build-script/gcloud-sdk-install.sh
 install:
-- "./build-scripts/gcloud-sdk-install.sh"
+- "./build-script/gcloud-sdk-install.sh"
 # script:
-# - "./build-scripts/deploy-terraform.sh"
+# - "./build-script/deploy-terraform.sh"

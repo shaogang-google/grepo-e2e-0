@@ -28,4 +28,4 @@ before_install:
 - source $HOME/google-cloud-sdk/path.bash.inc
 - gcloud components install kubectl
 - gcloud version
-- kubectl version
+# - kubectl version

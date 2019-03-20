@@ -1,22 +1,11 @@
 branches:
   only:
     - master
-# sudo: required
-# before_install:
-# - chmod +x ./build-script/gcloud-sdk-install.sh
-# install:
-# - "./build-script/gcloud-sdk-install.sh"
-# script:
-# - "./build-script/deploy-terraform.sh"
 
 cache:
   directories:
   # We cache the SDK so we don't have to download it again on subsequent builds.
   - $HOME/google-cloud-sdk
-services:
-# Include the docker service so you can roll your own images.
-# You can remove this if you already have images somewhere else.
-- docker
 env:
   global:
   # Do not prompt for user input when using any SDK methods.
@@ -34,16 +23,12 @@ before_install:
 # This line is critical. We setup the SDK to take precedence in our
 # environment over the old SDK that is already on the machine.
 - source $HOME/google-cloud-sdk/path.bash.inc
-# - gcloud components install kubectl
 - gcloud version
 - gcloud components update kubectl
 - gcloud auth activate-service-account --key-file ./client-secret.json
 - gcloud config set project shaogang-1bo2-project-0
 - gcloud config set compute/zone us-west1-b
-# - ./gcloud-sdk-configure.sh
-# - kubectl version
 install: true
 script:
 - gcloud container clusters get-credentials gcp-policy-management
-- kubectl get pods -n nomos-system
 - ./bin/nomos vet

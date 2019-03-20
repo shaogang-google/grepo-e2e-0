@@ -1,0 +1,6 @@
+apiVersion: bespin.dev/v1
+kind: Organization
+metadata:
+  name: shaogang.1bot2.info-test
+spec:
+  id: 512345678910

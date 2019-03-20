@@ -46,3 +46,4 @@ install: true
 script:
 - gcloud container clusters get-credentials gcp-policy-management
 - kubectl get pods -n nomos-system
+- ./bin/nomos vet

@@ -29,3 +29,5 @@ before_install:
 - gcloud components install kubectl
 - gcloud version
 # - kubectl version
+install: true
+# script: true

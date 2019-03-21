@@ -10,15 +10,11 @@ env:
   global:
   # Do not prompt for user input when using any SDK methods.
   - CLOUDSDK_CORE_DISABLE_PROMPTS=1
-  # - PATH=$PATH:$HOME/google-cloud-sdk/bin
-  # - PROJECT_ID="shaogang-1bo2-project-0"
-  # - ZONE="us-west1-b"
-  # - IMAGE_NAME=demo:latest
-  # - FULL_IMAGE_NAME=gcr.io/$PROJECT_ID/$IMAGE_NAME
-  # - GOOGLE_APPLICATION_CREDENTIALS="${PWD}/client-secret.json"
-  # - CLUSTER_NAME=gcp-policy-management
+
 before_install:
+# Decrypt the credential file.
 - openssl aes-256-cbc -K $encrypted_293563e5d432_key -iv $encrypted_293563e5d432_iv -in client-secret.json.enc -out ./client-secret.json -d
+# Install gcloud sdk.
 - if [ ! -d $HOME/google-cloud-sdk/bin ]; then rm -rf $HOME/google-cloud-sdk; curl https://sdk.cloud.google.com | bash > /dev/null; fi
 # This line is critical. We setup the SDK to take precedence in our
 # environment over the old SDK that is already on the machine.
@@ -31,4 +27,5 @@ before_install:
 install: true
 script:
 - gcloud container clusters get-credentials gcp-policy-management
+# Directly use binary just for demo. Can use docker if needed.
 - ./bin/nomos vet

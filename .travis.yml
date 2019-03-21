@@ -28,4 +28,4 @@ install: true
 script:
 - gcloud container clusters get-credentials gcp-policy-management
 # Directly use binary just for demo. Can use docker if needed.
-- ./bin/nomos vet
+# - ./bin/nomos vet

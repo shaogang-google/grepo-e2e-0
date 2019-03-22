@@ -29,3 +29,5 @@ script:
 - gcloud container clusters get-credentials gcp-policy-management
 # Directly use binary just for demo. Can use docker if needed.
 # - ./bin/nomos vet
+notifications:
+  slack: travisnotification:0g40XgRWaIpOFNrG5DnwOTz5

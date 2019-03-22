@@ -1,12 +1,27 @@
 steps:
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['container', 'clusters', 'get-credentials', 'gcp-policy-management', '--project=shaogang-1bo2-project-0', '--zone=us-west1-b']
+# - name: 'gcr.io/cloud-builders/gcloud'
+#   args: ['container', 'clusters', 'get-credentials', 'gcp-policy-management', '--project=shaogang-1bo2-project-0', '--zone=us-west1-b']
+#   env:
+#   - 'CLOUDSDK_CONTAINER_USE_APPLICATION_DEFAULT_CREDENTIALS=true'
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['config', 'current-context']
+  volumes:
+  - name: 'kube'
+    path: '/kube'
   env:
+  - 'KUBECONFIG=/kube/config'
+  - 'CLOUDSDK_COMPUTE_ZONE=us-west1-b'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=gcp-policy-management'
   - 'CLOUDSDK_CONTAINER_USE_APPLICATION_DEFAULT_CREDENTIALS=true'
 - name: 'gcr.io/cloud-builders/git'
   args: [ 'clone', 'https://github.com/shaogang-google/grepo-e2e-0.git' ]
 - name: 'ubuntu'
   args: [ '/workspace/bin/bespin', 'vet', '--path=/workspace' ]
+  volumes:
+  - name: 'kube'
+    path: '/kube'
+  env:
+  - 'KUBECONFIG=/kube/config'
 # - name: 'gcr.io/cloud-builders/docker'
 #   args: [ 'run', '--rm', 'gcr.io/gcp-policy-management-dev/shaogang/2019-03-22-21-24-11-utc/bespin-cli:latest', 'vet' ]
 # images:

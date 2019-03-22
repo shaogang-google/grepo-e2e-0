@@ -1,6 +1,8 @@
 steps:
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['container', 'clusters', 'get-credentials', 'gcp-policy-management', '--project=shaogang-1bo2-project-0', '--zone=us-west1-b']
+  env:
+  - 'CLOUDSDK_CONTAINER_USE_APPLICATION_DEFAULT_CREDENTIALS=true'
 - name: 'gcr.io/cloud-builders/git'
   args: [ 'clone', 'https://github.com/shaogang-google/grepo-e2e-0.git' ]
 - name: 'gcr.io/cloud-builders/docker'

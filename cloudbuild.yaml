@@ -5,9 +5,13 @@ steps:
   - 'CLOUDSDK_CONTAINER_USE_APPLICATION_DEFAULT_CREDENTIALS=true'
 - name: 'gcr.io/cloud-builders/git'
   args: [ 'clone', 'https://github.com/shaogang-google/grepo-e2e-0.git' ]
-- name: 'bespin-vet'
-  args: [ '/workspace/bin/bespin', 'vet', '--path=/workspace' ]
+# - name: 'bespin-vet'
+#   args: [ '/workspace/bin/bespin', 'vet', '--path=/workspace' ]
 # - name: 'gcr.io/cloud-builders/docker'
 #   args: [ 'run', '--rm', 'gcr.io/gcp-policy-management-dev/shaogang/2019-03-22-21-24-11-utc/bespin-cli:latest', 'vet' ]
+# images:
+# - 'gcr.io/gcp-policy-management-dev/shaogang/2019-03-22-21-24-11-utc/bespin-cli:latest'
+- name: 'gcr.io/gcp-policy-management-dev/shaogang/2019-03-22-21-24-11-utc/bespin-cli:latest'
+  args: [ 'vet', '--path=/workspace' ]
 # images:
 # - 'gcr.io/gcp-policy-management-dev/shaogang/2019-03-22-21-24-11-utc/bespin-cli:latest'

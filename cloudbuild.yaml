@@ -1,8 +1,4 @@
 steps:
-# - name: 'gcr.io/cloud-builders/gcloud'
-#   args: ['container', 'clusters', 'get-credentials', 'gcp-policy-management', '--project=shaogang-1bo2-project-0', '--zone=us-west1-b']
-#   env:
-#   - 'CLOUDSDK_CONTAINER_USE_APPLICATION_DEFAULT_CREDENTIALS=true'
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['config', 'current-context']
   volumes:
@@ -22,9 +18,3 @@ steps:
     path: '/kube'
   env:
   - 'KUBECONFIG=/kube/config'
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: [ 'run', '--rm', 'gcr.io/gcp-policy-management-dev/shaogang/2019-03-22-21-24-11-utc/bespin-cli:latest', 'vet' ]
-# images:
-# - 'gcr.io/gcp-policy-management-dev/shaogang/2019-03-22-21-24-11-utc/bespin-cli:latest'
-# - name: 'gcr.io/gcp-policy-management-dev/shaogang/2019-03-22-21-24-11-utc/bespin-cli:latest'
-#   args: [ 'vet', '--path=/workspace' ]

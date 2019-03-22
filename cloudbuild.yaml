@@ -7,5 +7,5 @@ steps:
   args: [ 'clone', 'https://github.com/shaogang-google/grepo-e2e-0.git' ]
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'run', '--rm', 'gcr.io/gcp-policy-management-dev/shaogang/2019-03-22-21-24-11-utc/bespin-cli:latest', 'vet' ]
-# images:
-# - 'gcr.io/gcp-policy-management-dev/shaogang/2019-03-22-21-24-11-utc/bespin-cli:latest'
+images:
+- 'gcr.io/gcp-policy-management-dev/shaogang/2019-03-22-21-24-11-utc/bespin-cli:latest'

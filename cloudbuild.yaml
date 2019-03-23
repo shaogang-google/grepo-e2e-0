@@ -1,4 +1,5 @@
 steps:
+# Get kubernetes cluster config and save to /kube
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['config', 'current-context']
   volumes:
@@ -9,8 +10,11 @@ steps:
   - 'CLOUDSDK_COMPUTE_ZONE=us-west1-b'
   - 'CLOUDSDK_CONTAINER_CLUSTER=gcp-policy-management'
   - 'CLOUDSDK_CONTAINER_USE_APPLICATION_DEFAULT_CREDENTIALS=true'
+# Get GRepo
 - name: 'gcr.io/cloud-builders/git'
   args: [ 'clone', 'https://github.com/shaogang-google/grepo-e2e-0.git' ]
+# In my case, I simply put the bespin binary in repo's bin folder because I got
+# some error using docker. Volumes and env let bestpin binary know our cluster.
 - name: 'ubuntu'
   args: [ '/workspace/bin/bespin', 'vet', '--path=/workspace' ]
   volumes:

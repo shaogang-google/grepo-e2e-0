@@ -1,7 +1,0 @@
-apiVersion: bespin.dev/v1
-kind: Project
-metadata:
-  name: shaogang-org-0319-0
-spec:
-  displayName: shaogang-org-0319-0
-  id: shaogang-org-0319-0

@@ -1,7 +1,0 @@
-apiVersion: bespin.dev/v1
-kind: Folder
-metadata:
-  name: shaogang-folder
-spec:
-  displayName: shaogang folder
-  id: 000000000000
